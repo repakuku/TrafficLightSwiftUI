@@ -14,6 +14,7 @@ struct CustomButton: ButtonStyle {
                 .foregroundColor(.blue)
                 .overlay(Capsule().stroke(Color.white, lineWidth: 4))
             configuration.label
+                .opacity(configuration.isPressed ? 0.5 : 1)
                 .foregroundColor(.white)
                 .font(.title.bold())
         }
