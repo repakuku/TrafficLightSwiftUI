@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var redLightOpacity = 1.0
+    @State private var redLightOpacity = 0.5
     @State private var yellowLightOpacity = 0.5
     @State private var greenLightOpacity = 0.5
-    @State private var currentLight = Light.red
-    @State private var buttonTitle = "Start"
+    @State private var currentLight = Light.green
+    @State private var buttonTitle = "START"
     
     private enum Light {
         case red
@@ -21,7 +21,7 @@ struct ContentView: View {
     }
     
     private func switchSignal() {
-        buttonTitle = "Next"
+        buttonTitle = "NEXT"
         
         switch currentLight {
         case .red:
@@ -51,10 +51,8 @@ struct ContentView: View {
                 CircleView(color: .yellow, opacity: yellowLightOpacity)
                 CircleView(color: .green, opacity: greenLightOpacity)
                 Spacer()
-                Button(action: { switchSignal() }) {
-                    Text(buttonTitle)
-                        .font(.title)
-                }
+                Button(buttonTitle, action: switchSignal)
+                    .buttonStyle(CustomButton())
             }
             .padding()
         }
