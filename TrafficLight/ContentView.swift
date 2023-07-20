@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum Light {
+    case none
     case red
     case yellow
     case green
@@ -16,12 +17,7 @@ enum Light {
 struct ContentView: View {
     
     @State private var buttonTitle = "START"
-    
-    @State private var redLightOpacity = 0.5
-    @State private var yellowLightOpacity = 0.5
-    @State private var greenLightOpacity = 0.5
-    
-    @State private var currentLight = Light.red
+    @State private var currentLight = Light.none
 
     var body: some View {
         ZStack {
@@ -29,9 +25,18 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                CircleView(color: .red, opacity: redLightOpacity)
-                CircleView(color: .yellow, opacity: yellowLightOpacity)
-                CircleView(color: .green, opacity: greenLightOpacity)
+                CircleView(
+                    color: .red,
+                    opacity: currentLight == .red ? 1 : 0.3
+                )
+                CircleView(
+                    color: .yellow,
+                    opacity: currentLight == .yellow ? 1 : 0.3
+                )
+                CircleView(
+                    color: .green,
+                    opacity: currentLight == .green ? 1 : 0.3
+                )
                 
                 Spacer()
                 // Кнопка из лекции
@@ -57,23 +62,15 @@ struct ContentView: View {
     }
     
     private func switchLight() {
-        
-        let lightIsOn = 1.0
-        let lightIsOff = 0.3
-        
         switch currentLight {
+        case .none:
+            currentLight = .red
         case .red:
             currentLight = .yellow
-            redLightOpacity = lightIsOn
-            greenLightOpacity = lightIsOff
         case .yellow:
             currentLight = .green
-            yellowLightOpacity = lightIsOn
-            redLightOpacity = lightIsOff
         case .green:
             currentLight = .red
-            greenLightOpacity = lightIsOn
-            yellowLightOpacity = lightIsOff
         }
     }
 }
