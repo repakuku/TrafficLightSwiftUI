@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct CircleView: View {
+    
     let color: Color
     let opacity: Double
     
     var body: some View {
         Circle()
-            .foregroundColor(color.opacity(opacity))
             .frame(width: 150)
+            .foregroundColor(color)
+            .opacity(opacity)
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
     }
 }

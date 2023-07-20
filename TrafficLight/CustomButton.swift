@@ -16,7 +16,8 @@ struct CustomButton: ButtonStyle {
             configuration.label
                 .opacity(configuration.isPressed ? 0.5 : 1)
                 .foregroundColor(.white)
-                .font(.title.bold())
+                .font(.title)
+                .fontWeight(.bold)
         }
         .frame(width: 150, height: 60)
     }
