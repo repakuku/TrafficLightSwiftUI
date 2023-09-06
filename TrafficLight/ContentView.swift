@@ -35,10 +35,10 @@ struct ContentView: View {
                 
                 Spacer()
                 // Кнопка из лекции
-                StartButtonView(title: buttonTitle) {
-                    changeLabel()
-                    switchLight()
-                }
+//                StartButtonView(title: buttonTitle) {
+//                    changeLabel()
+//                    switchLight()
+//                }
                 // Моя кнопка
                 Button(buttonTitle) {
                     changeLabel()
