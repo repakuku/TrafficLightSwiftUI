@@ -19,7 +19,7 @@ struct CircleView: View {
             .foregroundColor(color)
             .opacity(opacity)
             .overlay(Circle().stroke(Color.white, lineWidth: 4))
-            .shadow(color: shadowColor, radius: 10)
+            .shadow(color: shadowColor, radius: 30)
     }
 }
 

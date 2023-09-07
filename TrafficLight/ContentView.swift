@@ -8,6 +8,7 @@
 import SwiftUI
 
 enum Light {
+    case none
     case red
     case yellow
     case green
@@ -21,7 +22,7 @@ struct ContentView: View {
     @State private var yellowLightOpacity = 0.5
     @State private var greenLightOpacity = 0.5
     
-    @State private var currentLight = Light.red
+    @State private var nextLight = Light.none
 
     var body: some View {
         ZStack {
@@ -29,9 +30,21 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                CircleView(color: .red, shadowColor: currentLight == .yellow ? .red : .black, opacity: redLightOpacity)
-                CircleView(color: .yellow, shadowColor: currentLight == .green ? .yellow : .black, opacity: yellowLightOpacity)
-                CircleView(color: .green, shadowColor: currentLight == .red ? .green : .black, opacity: greenLightOpacity)
+                CircleView(
+                    color: .red,
+                    shadowColor: nextLight == .yellow ? .red : .black,
+                    opacity: redLightOpacity
+                )
+                CircleView(
+                    color: .yellow,
+                    shadowColor: nextLight == .green ? .yellow : .black,
+                    opacity: yellowLightOpacity
+                )
+                CircleView(
+                    color: .green,
+                    shadowColor: nextLight == .red ? .green : .black,
+                    opacity: greenLightOpacity
+                )
                 
                 Spacer()
                 
@@ -56,17 +69,20 @@ struct ContentView: View {
         let lightIsOn = 1.0
         let lightIsOff = 0.3
         
-        switch currentLight {
+        switch nextLight {
+        case .none:
+            nextLight = .yellow
+            redLightOpacity = lightIsOn
         case .red:
-            currentLight = .yellow
+            nextLight = .yellow
             redLightOpacity = lightIsOn
             greenLightOpacity = lightIsOff
         case .yellow:
-            currentLight = .green
+            nextLight = .green
             yellowLightOpacity = lightIsOn
             redLightOpacity = lightIsOff
         case .green:
-            currentLight = .red
+            nextLight = .red
             greenLightOpacity = lightIsOn
             yellowLightOpacity = lightIsOff
         }
