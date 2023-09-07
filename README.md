@@ -4,4 +4,4 @@ Working with SwiftUI elements: Color, Circle, Stacks, Button. Combining views. C
 
 * SwiftUI
 
-<img src="https://github.com/repakuku/TrafficLightSwiftUI/assets/43852158/e7f460a5-de96-4c43-86b7-fb5cb145ba8c" width="300">
+<img src="https://github.com/repakuku/TrafficLightSwiftUI/assets/43852158/7dcee222-ad20-4fac-b260-d61e53b0a57d" width="300">
