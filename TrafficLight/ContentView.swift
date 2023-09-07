@@ -29,17 +29,12 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 20) {
-                CircleView(color: .red, opacity: redLightOpacity)
-                CircleView(color: .yellow, opacity: yellowLightOpacity)
-                CircleView(color: .green, opacity: greenLightOpacity)
+                CircleView(color: .red, shadowColor: currentLight == .yellow ? .red : .black, opacity: redLightOpacity)
+                CircleView(color: .yellow, shadowColor: currentLight == .green ? .yellow : .black, opacity: yellowLightOpacity)
+                CircleView(color: .green, shadowColor: currentLight == .red ? .green : .black, opacity: greenLightOpacity)
                 
                 Spacer()
-                // Кнопка из лекции
-//                StartButtonView(title: buttonTitle) {
-//                    changeLabel()
-//                    switchLight()
-//                }
-                // Моя кнопка
+                
                 Button(buttonTitle) {
                     changeLabel()
                     switchLight()
